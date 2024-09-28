@@ -7,23 +7,36 @@ public class HomingProjectile : MonoBehaviour
     // Start is called before the first frame update
     public float speed = 1.5f;
     public GameObject TimePlayer, SpacePlayer;
+    Rigidbody2D rb;
+    bool isFrozen;
 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        isFrozen = gameObject.GetComponent<TimeFreezable>().GetisFrozen();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += ProjectileDirection() * Time.deltaTime;
+        //transform.position += ProjectileDirection() * Time.deltaTime;
     }
 
-    public Vector3 ProjectileDirection()
+    void FixedUpdate()
     {
-        Vector3 displacementFromTime = TimePlayer.transform.position - transform.position;
-        Vector3 displacementFromSpace = SpacePlayer.transform.position - transform.position;
-        Vector3 TargetDirection;
+        isFrozen = gameObject.GetComponent<TimeFreezable>().GetisFrozen();
+        if (!isFrozen)
+        {
+            rb.position += ProjectileDirection() * Time.fixedDeltaTime;
+        }
+
+    }
+
+    public Vector2 ProjectileDirection()
+    {
+        Vector2 displacementFromTime = TimePlayer.transform.position - transform.position;
+        Vector2 displacementFromSpace = SpacePlayer.transform.position - transform.position;
+        Vector2 TargetDirection;
         if (displacementFromTime.magnitude <= displacementFromSpace.magnitude)
         {
             TargetDirection = displacementFromTime.normalized;
@@ -31,7 +44,7 @@ public class HomingProjectile : MonoBehaviour
         else {
             TargetDirection = displacementFromSpace.normalized;
         }
-        Vector3 Velocity = TargetDirection * speed;
+        Vector2 Velocity = TargetDirection * speed;
 
         return Velocity;
     }

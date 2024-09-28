@@ -41,4 +41,12 @@ public class TimeFreezable : MonoBehaviour
             isFrozen = false;
         }
     }
+
+    public bool GetisFrozen()
+    { return isFrozen; }
+
+    public void SetisFrozen()
+    { 
+        isFrozen = !isFrozen; 
+    }
 }
