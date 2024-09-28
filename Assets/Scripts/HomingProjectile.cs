@@ -8,12 +8,12 @@ public class HomingProjectile : MonoBehaviour
     public float speed = 1.5f;
     public GameObject TimePlayer, SpacePlayer;
     Rigidbody2D rb;
-    bool isFrozen;
+    TimeFreezable timeFreezable;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        isFrozen = gameObject.GetComponent<TimeFreezable>().GetisFrozen();
+        timeFreezable = gameObject.GetComponent<TimeFreezable>();
     }
 
     // Update is called once per frame
@@ -24,8 +24,7 @@ public class HomingProjectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        isFrozen = gameObject.GetComponent<TimeFreezable>().GetisFrozen();
-        if (!isFrozen)
+        if (timeFreezable.canChange())
         {
             rb.position += ProjectileDirection() * Time.fixedDeltaTime;
         }

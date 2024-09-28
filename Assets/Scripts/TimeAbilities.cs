@@ -46,7 +46,6 @@ public class TimeAbilities : MonoBehaviour
 
             if (shouldFreeze && freezeAmountLeftSeconds > 0) {
                 freezableObj.TimeFreeze();
-                freezableObj.SetisFrozen();
             } else {
                 freezableObj.TimeUnfreeze();
             }

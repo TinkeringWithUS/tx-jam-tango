@@ -42,11 +42,7 @@ public class TimeFreezable : MonoBehaviour
         }
     }
 
-    public bool GetisFrozen()
-    { return isFrozen; }
-
-    public void SetisFrozen()
-    { 
-        isFrozen = !isFrozen; 
+    public bool canChange() {
+        return !isFrozen;
     }
 }
