@@ -6,6 +6,7 @@ public class PlayerMovements : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed = 10;
+    public float jumpHeight = 10;
     Rigidbody2D myRigidBody;
     Vector2 velocity;
 
@@ -29,7 +30,7 @@ public class PlayerMovements : MonoBehaviour
         Vector2 direction = new Vector2(0, 0);
 
         if(Input.GetKey(upKey)) {
-
+            direction += new Vector2(0, 1) * jumpHeight;
         } else if(Input.GetKey(downKey)) {
 
         } else if(Input.GetKey(leftKey)) {
