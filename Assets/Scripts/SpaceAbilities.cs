@@ -19,6 +19,8 @@ public class SpaceAbilities : MonoBehaviour
     public float teleportCooldown;
     private bool canTeleport = true;
 
+    bool gravityFlipped = false;
+
 
 
     // Start is called before the first frame update
@@ -48,11 +50,36 @@ public class SpaceAbilities : MonoBehaviour
 
             numAvailableTeleports--;
         }
+
+        FlipGravity();
+
     } 
 
     private IEnumerator TeleportCooldownTimer() {
         yield return new WaitForSeconds(teleportCooldown);
         canTeleport = true;
     }
+
+    public void FlipGravity()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (gravityFlipped == false)
+            {
+                gravityFlipped = true;
+                Physics2D.gravity = new Vector2(3.0f, 0.0f);
+                //rb.gravityScale *= -1;
+            }
+            else
+            {
+                gravityFlipped = false;
+                Physics2D.gravity = new Vector2(-3.0f, 0.0f);
+                //rb.gravityScale *= -1;
+            }
+        }
+        print(gravityFlipped);
+    }
+
+    
 }
 

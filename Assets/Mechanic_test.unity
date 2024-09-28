@@ -300,6 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 292127085}
   - component: {fileID: 292127084}
+  - component: {fileID: 292127089}
   - component: {fileID: 292127088}
   - component: {fileID: 292127087}
   - component: {fileID: 292127086}
@@ -442,6 +443,26 @@ MonoBehaviour:
   downKey: 115
   leftKey: 97
   rightKey: 100
+--- !u!114 &292127089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292127083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d824925ba1b8254cbde20ff5ad34aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftKey: 97
+  rightKey: 100
+  upKey: 0
+  downKey: 0
+  teleportKey: 101
+  teleportDistance: 10
+  numAvailableTeleports: 3
+  teleportCooldown: 1
 --- !u!1 &639286355
 GameObject:
   m_ObjectHideFlags: 0
