@@ -33,10 +33,11 @@ public class PlayerMovements : MonoBehaviour
             direction += new Vector2(0, 1) * jumpHeight;
         } else if(Input.GetKey(downKey)) {
 
-        } else if(Input.GetKey(leftKey)) {
-            direction = new Vector2(-1, 0);
+        }
+        if(Input.GetKey(leftKey)) {
+            direction += new Vector2(-1, 0);
         } else if(Input.GetKey(rightKey)) {
-            direction = new Vector2(1, 0);
+            direction += new Vector2(1, 0);
         }
 
         velocity = direction * speed;

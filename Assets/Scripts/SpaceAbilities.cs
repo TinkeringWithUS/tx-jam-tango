@@ -6,8 +6,8 @@ public class SpaceAbilities : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    public KeyCode leftKey;
-    public KeyCode rightKey;
+    public KeyCode leftKey = KeyCode.A;
+    public KeyCode rightKey = KeyCode.D;
     public KeyCode upKey;
     public KeyCode downKey;
     public KeyCode teleportKey;
