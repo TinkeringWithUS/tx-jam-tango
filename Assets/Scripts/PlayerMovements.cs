@@ -8,6 +8,12 @@ public class PlayerMovements : MonoBehaviour
     public float speed = 10;
     Rigidbody2D myRigidBody;
     Vector2 velocity;
+
+    public KeyCode upKey;
+    public KeyCode downKey;
+    public KeyCode leftKey;
+    public KeyCode rightKey;
+
     //int coinCount;
     // Start is called before the first frame update
     void Start()
@@ -19,13 +25,20 @@ public class PlayerMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"),0);
-        Vector2 direction = input.normalized;
-        velocity = direction * speed;
-        Vector2 displacement = velocity * Time.deltaTime;
+        // Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"),0);
+        Vector2 direction = new Vector2(0, 0);
 
-        //transform.position += displacement;
-        //transform.Translate(displacement); 
+        if(Input.GetKey(upKey)) {
+
+        } else if(Input.GetKey(downKey)) {
+
+        } else if(Input.GetKey(leftKey)) {
+            direction = new Vector2(-1, 0);
+        } else if(Input.GetKey(rightKey)) {
+            direction = new Vector2(1, 0);
+        }
+
+        velocity = direction * speed;
     }
 
     public Vector2 playerInputCheck()
