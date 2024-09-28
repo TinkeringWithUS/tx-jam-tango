@@ -17,7 +17,6 @@ public class TimeAbilities : MonoBehaviour
     public float freezeAmountLeftSeconds;
     private float maxFreezeAmountSeconds;
     private float freezeStart;
-    private bool isFreezed = false;
     
     void Start()
     {
@@ -47,12 +46,8 @@ public class TimeAbilities : MonoBehaviour
 
             if (shouldFreeze && freezeAmountLeftSeconds > 0) {
                 freezableObj.TimeFreeze();
-
-
-                isFreezed = true;
             } else {
                 freezableObj.TimeUnfreeze();
-                isFreezed = false;
             }
         }
 
