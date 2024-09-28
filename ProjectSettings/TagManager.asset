@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TimePlayer
   - SpacePlayer
+  - Hazard
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class HomingProjectile : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -48,10 +50,14 @@ public class HomingProjectile : MonoBehaviour
         return Velocity;
     }
 
-    private void OnTriggerEnter2D(Collider2D TriggerCollider)
+    private void OnTriggerEnter2D(Collider2D triggerCollider)
     {
+        if (triggerCollider.gameObject.tag == "TimePlayer" || triggerCollider.gameObject.tag == "SpacePlayer")
+        {
+            Debug.Log("collision tag = hazard detected");
+            SceneManager.LoadScene(2);
+        }
+
         Destroy(gameObject);
-
     }
-
 }
