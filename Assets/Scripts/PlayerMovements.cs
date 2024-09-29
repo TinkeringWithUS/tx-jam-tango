@@ -37,7 +37,7 @@ public class PlayerMovements : MonoBehaviour
         Vector2 direction = new Vector2(0, 0);
 
         if(Input.GetKey(upKey) && isGrounded) {
-            direction += new Vector2(0, 1) * jumpHeight;
+            direction += new Vector2(0, 1) * jumpHeight/speed;
         } else if(Input.GetKey(downKey)) {
 
         }
@@ -59,10 +59,15 @@ public class PlayerMovements : MonoBehaviour
         myRigidBody.position += velocity * Time.fixedDeltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Ground" || collider.gameObject.tag == "Door")
+    void OnTriggerStay2D(Collider2D collider) {
+        if ((collider.gameObject.tag == "Ground" || collider.gameObject.tag == "Door") && transform.position.y > collider.gameObject.transform.position.y)
         {
             isGrounded = true;
+        }
+
+        if (collider.gameObject.tag == "platform")
+        {
+            transform.parent = collider.gameObject.transform;
         }
 
     }
@@ -72,6 +77,11 @@ public class PlayerMovements : MonoBehaviour
         if (collider.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        }
+
+        if (collider.gameObject.tag == "platform")
+        {
+            transform.parent = null;
         }
 
     }

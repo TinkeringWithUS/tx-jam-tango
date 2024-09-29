@@ -24,15 +24,30 @@ public class MovingPlatform : MonoBehaviour
     }
 
     void FixedUpdate() {
-        // if not in valid x range of movement
-        if(myRigidBody.position.x < startPoint.x || myRigidBody.position.x > startPoint.x + endXChange) {
-            direction *= -1;
+        if (direction.x != 0)
+        {
+            if (myRigidBody.position.x < startPoint.x || myRigidBody.position.x > startPoint.x + endXChange)
+            {
+                direction *= -1;
+            }
         }
+        else if (direction.y != 0)
+        {
+            if (myRigidBody.position.y < startPoint.y || myRigidBody.position.y > startPoint.y + endXChange)
+            {
+                direction *= -1;
+            }
+        }
+        // if not in valid x range of movement
+
 
         myRigidBody.position += direction * speed * Time.fixedDeltaTime;
     }
 
+    /*
     void OnCollisionEnter2D(Collision2D collision) {
         direction *= -1;
     }
+    */
+
 }

@@ -9,6 +9,7 @@ TagManager:
   - Hazard
   - Ground
   - Door
+  - platform
   layers:
   - Default
   - TransparentFX
