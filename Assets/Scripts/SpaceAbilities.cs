@@ -34,15 +34,23 @@ public class SpaceAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(rightKey)) {
+        if (Input.GetKey(rightKey))
+        {
             lastDirection = new Vector2(1, 0);
-        } else if(Input.GetKey(leftKey)) {
+        }
+        else if (Input.GetKey(leftKey))
+        {
             lastDirection = new Vector2(-1, 0);
-        } else if(Input.GetKey(upKey)) {
+        }
+        else if (Input.GetKey(upKey))
+        {
             lastDirection = new Vector2(0, 1);
-        } else if(Input.GetKey(downKey)) {
+        }
+        else if (Input.GetKey(downKey))
+        {
             lastDirection = new Vector2(0, -1);
-        } else if(canTeleport && numAvailableTeleports > 0 && Input.GetKey(teleportKey)) {
+        }
+        if(canTeleport && numAvailableTeleports > 0 && Input.GetKey(teleportKey)) {
             Vector2 teleportLocation = lastDirection * teleportDistance + rb.position;
 
             rb.position = teleportLocation;

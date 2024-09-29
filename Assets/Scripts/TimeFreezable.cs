@@ -35,6 +35,7 @@ public class TimeFreezable : MonoBehaviour
     public void TimeUnfreeze() {
         if (isFrozen && gameObject.GetComponent<TimeAbilities>() == null) {
             rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             rb.velocity = beforeFreezeVelocity;
 

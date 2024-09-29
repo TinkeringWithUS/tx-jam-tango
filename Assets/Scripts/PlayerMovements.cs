@@ -79,7 +79,13 @@ public class PlayerMovements : MonoBehaviour
         {
             isGrounded = true;
         }
-        else {
+
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Ground")
+        {
             isGrounded = false;
         }
 
