@@ -11,6 +11,7 @@ public class HomingProjectile : MonoBehaviour
     public GameObject TimePlayer, SpacePlayer;
     Rigidbody2D rb;
     TimeFreezable timeFreezable;
+    public float range = Mathf.Infinity;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class HomingProjectile : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (timeFreezable.canChange())
+        if (timeFreezable.canChange() && CheckDistance())
         {
             rb.position += ProjectileDirection() * Time.fixedDeltaTime;
         }
@@ -48,6 +49,18 @@ public class HomingProjectile : MonoBehaviour
         Vector2 Velocity = TargetDirection * speed;
 
         return Velocity;
+    }
+
+    public bool CheckDistance()
+    {
+        Vector2 distanceFromTime = TimePlayer.transform.position - transform.position;
+        Vector2 distanceFromSpace = SpacePlayer.transform.position - transform.position;
+        if ((distanceFromTime).magnitude < range || (distanceFromSpace).magnitude < range)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D triggerCollider)
