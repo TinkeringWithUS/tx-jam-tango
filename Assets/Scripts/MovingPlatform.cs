@@ -9,6 +9,7 @@ public class MovingPlatform : MonoBehaviour
     private Vector2 startPoint;
     public Vector2 direction = new Vector2(1, 0);
     public float speed;
+    public GameObject TimePlayer;
     
     // Start is called before the first frame update
     void Start()
@@ -24,24 +25,28 @@ public class MovingPlatform : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (direction.x != 0)
+        bool Frozen = TimePlayer.GetComponent<TimeAbilities>().GetshouldFreeze();
+        if (!Frozen)
         {
-            if (myRigidBody.position.x < startPoint.x || myRigidBody.position.x > startPoint.x + endXChange)
+            if (direction.x != 0)
             {
-                direction *= -1;
+                if (myRigidBody.position.x < startPoint.x || myRigidBody.position.x > startPoint.x + endXChange)
+                {
+                    direction *= -1;
+                }
             }
-        }
-        else if (direction.y != 0)
-        {
-            if (myRigidBody.position.y < startPoint.y || myRigidBody.position.y > startPoint.y + endXChange)
+            else if (direction.y != 0)
             {
-                direction *= -1;
+                if (myRigidBody.position.y < startPoint.y || myRigidBody.position.y > startPoint.y + endXChange)
+                {
+                    direction *= -1;
+                }
             }
-        }
-        // if not in valid x range of movement
+            // if not in valid x range of movement
 
 
-        myRigidBody.position += direction * speed * Time.fixedDeltaTime;
+            myRigidBody.position += direction * speed * Time.fixedDeltaTime;
+        }
     }
 
     /*

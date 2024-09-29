@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class SpaceAbilities : MonoBehaviour
+public class SpaceAbilities2 : MonoBehaviour
 {
     Rigidbody2D rb;
 
@@ -18,12 +15,12 @@ public class SpaceAbilities : MonoBehaviour
     public float gravityStrength = 100.0f;
     private int currentGravDirection = 0;
 
+    private Vector2 lastDirection;
     public float teleportDistance;
 
     public int numAvailableTeleports;
     public float teleportCooldown;
     private bool canTeleport = true;
-    private Vector2 Tdirection;
 
     // Start is called before the first frame update
     void Start()
@@ -34,16 +31,13 @@ public class SpaceAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 lastDirection;
         if (Input.GetKey(rightKey))
         {
             lastDirection = new Vector2(1, 0);
-            Tdirection = lastDirection;
         }
         else if (Input.GetKey(leftKey))
         {
             lastDirection = new Vector2(-1, 0);
-            Tdirection = lastDirection;
         }
         else if (Input.GetKey(upKey))
         {
@@ -53,8 +47,9 @@ public class SpaceAbilities : MonoBehaviour
         {
             lastDirection = new Vector2(0, -1);
         }
-        if(canTeleport && numAvailableTeleports > 0 && Input.GetKey(teleportKey)) {
-            Vector2 teleportLocation = Tdirection * teleportDistance + rb.position;
+        if (canTeleport && numAvailableTeleports > 0 && Input.GetKey(teleportKey))
+        {
+            Vector2 teleportLocation = lastDirection * teleportDistance + rb.position;
 
             rb.position = teleportLocation;
 
@@ -65,9 +60,10 @@ public class SpaceAbilities : MonoBehaviour
         }
 
         FlipGravity();
-    } 
+    }
 
-    private IEnumerator TeleportCooldownTimer() {
+    private IEnumerator TeleportCooldownTimer()
+    {
         yield return new WaitForSeconds(teleportCooldown);
         canTeleport = true;
     }
@@ -82,13 +78,12 @@ public class SpaceAbilities : MonoBehaviour
 
             Physics2D.gravity = gravityStrength * gravityDirections[currentGravDirection];
 
-            GravityAffected[] gravityAffected = FindObjectsOfType<GravityAffected>();             
+            GravityAffected[] gravityAffected = FindObjectsOfType<GravityAffected>();
 
-            foreach (GravityAffected affected in gravityAffected) 
+            foreach (GravityAffected affected in gravityAffected)
             {
-                affected.killVelocity(); 
+                affected.killVelocity();
             }
         }
     }
 }
-

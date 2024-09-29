@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class TimeAbilities : MonoBehaviour
 
     public GameObject[] snapshots;
     Vector3 ScaleSnapShot;
+    bool shouldFreeze = false;
 
 
     public Slider freezeLeftSlider;
@@ -32,7 +34,7 @@ public class TimeAbilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool shouldFreeze = false;
+        shouldFreeze = false;
 
         if(Input.GetKey(freezeKey)) {
             shouldFreeze = true;
@@ -76,5 +78,10 @@ public class TimeAbilities : MonoBehaviour
             gameObject.transform.position = snapshots[0].transform.position;
             gameObject.transform.localScale = ScaleSnapShot;
         }
+    }
+
+    public bool GetshouldFreeze()
+    {
+        return shouldFreeze;
     }
 }

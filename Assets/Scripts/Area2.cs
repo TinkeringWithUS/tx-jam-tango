@@ -21,5 +21,6 @@ public class Area2 : MonoBehaviour
                 Camera.moveSection(PreviousArea);
             }
         }
+        print(collision.gameObject.tag);
     }
 }
