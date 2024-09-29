@@ -3278,22 +3278,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5766659364116988225, guid: e4765da348b93904c81a00fa8ac48669, type: 3}
-      propertyPath: downKey
-      value: 115
-      objectReference: {fileID: 0}
-    - target: {fileID: 5766659364116988225, guid: e4765da348b93904c81a00fa8ac48669, type: 3}
-      propertyPath: flipGravityKey
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5766659364116988225, guid: e4765da348b93904c81a00fa8ac48669, type: 3}
-      propertyPath: gravityStrength
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5766659364116988225, guid: e4765da348b93904c81a00fa8ac48669, type: 3}
-      propertyPath: teleportDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5766659364116988251, guid: e4765da348b93904c81a00fa8ac48669, type: 3}
       propertyPath: m_Name
       value: SpacePlayer
@@ -3899,10 +3883,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -1846500883724306599, guid: ac8f77149d757b1478cc01cec49e3968, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 63765324348613353, guid: ac8f77149d757b1478cc01cec49e3968, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3947,18 +3927,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 63765324348613359, guid: ac8f77149d757b1478cc01cec49e3968, type: 3}
-      propertyPath: rewindKey
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 63765324348613359, guid: ac8f77149d757b1478cc01cec49e3968, type: 3}
-      propertyPath: snapshotKey
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 63765324348613359, guid: ac8f77149d757b1478cc01cec49e3968, type: 3}
-      propertyPath: freezeLeftSlider
-      value: 
-      objectReference: {fileID: 1676279052}
     - target: {fileID: 63765324348613365, guid: ac8f77149d757b1478cc01cec49e3968, type: 3}
       propertyPath: m_Name
       value: TimePlayer

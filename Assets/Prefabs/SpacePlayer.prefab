@@ -105,13 +105,13 @@ MonoBehaviour:
   leftKey: 97
   rightKey: 100
   upKey: 119
-  downKey: 96
+  downKey: 115
   teleportKey: 101
   flipGravityKey: 113
-  gravityStrength: 100
+  gravityStrength: 10
   teleportDistance: 10
-  numAvailableTeleports: 3
-  teleportCooldown: 1
+  numAvailableTeleports: 1000000
+  teleportCooldown: 2
 --- !u!114 &5766659364116988224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   downKey: 115
   leftKey: 97
   rightKey: 100
+  isGrounded: 1
 --- !u!114 &1687747244895821985
 MonoBehaviour:
   m_ObjectHideFlags: 0

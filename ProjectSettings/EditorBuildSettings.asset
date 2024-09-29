@@ -12,15 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/TutorialLevelOne.unity
     guid: 84bffd96d366acb4aa23ccfaa8ba1321
   - enabled: 1
-    path: Assets/Scenes/Mechanic_test.unity
-    guid: 152b45dd2fbee954b9955313f7605490
+    path: Assets/Scenes/Fast Platforms.unity
+    guid: de680414385f71d4c827e1a72d700aa5
+  - enabled: 1
+    path: Assets/Scenes/BossChase.unity
+    guid: bea170cde5b04ae49bb3073349052c3e
+  - enabled: 1
+    path: Assets/Scenes/BossFinalScene.unity
+    guid: 75f3d38c2074bbd4e93d66af8a8453de
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 8f42f363f06e78f46bd173e71704bfc3
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 8cc08837341ab2f4ead1d01347f51cc3
-  - enabled: 1
-    path: Assets/Scenes/Fast Platforms.unity
-    guid: de680414385f71d4c827e1a72d700aa5
+  - enabled: 0
+    path: Assets/Scenes/Mechanic_test.unity
+    guid: 152b45dd2fbee954b9955313f7605490
   m_configObjects: {}

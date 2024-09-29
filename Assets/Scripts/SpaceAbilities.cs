@@ -16,13 +16,14 @@ public class SpaceAbilities : MonoBehaviour
     public KeyCode teleportKey;
     public KeyCode flipGravityKey;
     public float gravityStrength = 100.0f;
-    private int currentGravDirection = 0;
+    private int currentGravDirection = -1;
 
     public float teleportDistance;
 
     public int numAvailableTeleports;
     public float teleportCooldown;
     private bool canTeleport = true;
+    private bool canFlipGravity = true;
     private Vector2 Tdirection;
 
     // Start is called before the first frame update
@@ -71,12 +72,17 @@ public class SpaceAbilities : MonoBehaviour
         yield return new WaitForSeconds(teleportCooldown);
         canTeleport = true;
     }
+    private IEnumerator FlipGravityCooldownTimer() {
+        yield return new WaitForSeconds(teleportCooldown);
+        canFlipGravity = true;
+    }
+
 
     public void FlipGravity()
     {
         Vector2[] gravityDirections = { new Vector2(0.0f, 1f), new Vector2(0.0f, -1.0f) };
 
-        if (Input.GetKeyDown(flipGravityKey))
+        if (Input.GetKeyDown(flipGravityKey) && canFlipGravity)
         {
             currentGravDirection = (currentGravDirection + 1) % gravityDirections.Length;
 
@@ -88,6 +94,8 @@ public class SpaceAbilities : MonoBehaviour
             {
                 affected.killVelocity(); 
             }
+            StartCoroutine(FlipGravityCooldownTimer());
+            canFlipGravity = false;
         }
     }
 }
