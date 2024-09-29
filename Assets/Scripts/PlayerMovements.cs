@@ -75,7 +75,14 @@ public class PlayerMovements : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        isGrounded = collider.gameObject.tag == "Ground";
+        if (collider.gameObject.tag == "Ground" || collider.gameObject.tag == "Door")
+        {
+            isGrounded = true;
+        }
+        else {
+            isGrounded = false;
+        }
+
     }
 
 }
