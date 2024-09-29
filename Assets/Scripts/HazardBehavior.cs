@@ -25,7 +25,7 @@ public class HazardBehavior : MonoBehaviour
         if (collider.gameObject.tag == "TimePlayer" || collider.gameObject.tag == "SpacePlayer")
         {
             Debug.Log("collision tag = hazard detected");
-            SceneManager.LoadScene("LoseScene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
