@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.WSA;
@@ -11,6 +12,8 @@ public class Projectile : MonoBehaviour
     Rigidbody2D rb;
     TimeFreezable timeFreezable;
     Vector2 Direction;
+    public float lifeSpan = 2;
+    float lifeSpanCounter = 0;
 
     void Start()
     {
@@ -20,11 +23,15 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        Setdirection();
+        //Setdirection();
     }
     // Update is called once per frame
     void Update()
     {
+        lifeSpanCounter += Time.deltaTime;
+        if (lifeSpanCounter >= lifeSpan) { 
+            gameObject.SetActive(false);
+        }
         //transform.position += ProjectileDirection() * Time.deltaTime;
     }
 
@@ -37,8 +44,9 @@ public class Projectile : MonoBehaviour
 
     }
 
-    void Setdirection()
+    public void Setdirection()
     {
+        gameObject.SetActive(true);
         Direction = Trackplayer();
     }
 
@@ -68,6 +76,6 @@ public class Projectile : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
