@@ -10,6 +10,8 @@ TagManager:
   - Ground
   - Door
   - platform
+  - SpaceShot
+  - TimeShot
   layers:
   - Default
   - TransparentFX

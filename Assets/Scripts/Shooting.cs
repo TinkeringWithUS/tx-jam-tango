@@ -38,14 +38,17 @@ public class Shooting : MonoBehaviour
     {
         balls[findBall()].transform.position = firePoint.position;
         balls[findBall()].GetComponent<Projectile>().Setdirection();
+        Debug.Log("in shoot, is ball active in hiearchry: " + balls[findBall()].activeInHierarchy);
     }
 
     private int findBall()
     {
         for (int i = 0; i < balls.Length; i++)
         {
-            if (!balls[i].activeInHierarchy)
+            if (!balls[i].activeInHierarchy) {
+                Debug.Log("find ball, active in hiearchy (found the ball): " + balls[i].activeInHierarchy);
                 return i;
+            }
         }
         return 0;
     }
