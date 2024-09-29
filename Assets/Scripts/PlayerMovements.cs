@@ -54,21 +54,6 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
-    public Vector2 playerInputCheck()
-    {
-       Vector2 inputPlayer1 = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-       Vector2 inputPlayer2 = new Vector2(Input.GetAxisRaw("Horizontal2"), 0);
-
-        if (gameObject.tag == "TimePlayer")
-        {
-            return inputPlayer1;
-        }
-        else
-        {
-            return inputPlayer2;
-        }
-    }
-
     void FixedUpdate()
     {
         myRigidBody.position += velocity * Time.fixedDeltaTime;

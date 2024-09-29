@@ -70,12 +70,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D triggerCollider)
     {
-        if (triggerCollider.gameObject.tag == "TimePlayer" || triggerCollider.gameObject.tag == "SpacePlayer")
-        {
-            Debug.Log("collision tag = hazard detected");
-            SceneManager.LoadScene(2);
-        }
+        HazardBehavior.hazardBehavior(triggerCollider);
 
-        gameObject.SetActive(false);
+        // phase through the boss platform
+        if(triggerCollider.GetComponent<BossPlatform>() == null) {
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,8 +13,8 @@ public class BossChase : MonoBehaviour
     public float speed = 1.0f;
     public Transform PathHolder;
     public GameObject[] CheckPointsHolder;
-    int Mark = 1;
-    Vector3[] waypoints = new Vector3[1];
+    int Mark = 0;
+    Vector3[] waypoints;
     public bool pointReached = true;
 
     // Start is called before the first frame update
@@ -21,14 +22,12 @@ public class BossChase : MonoBehaviour
     {
         //PathHolder = gameObject.transform.GetChild(0).transform;
         waypoints = new Vector3[PathHolder.childCount];
+
+        for (int i = 0; i < waypoints.Length; i++)
         {
-            for (int i = 0; i < waypoints.Length; i++)
-            {
-                waypoints[i] = PathHolder.GetChild(i).position;
-                //waypoints[i] = new Vector3(waypoints[i].x, transform.position.y, waypoints[i].z);
-            }
+            waypoints[i] = PathHolder.GetChild(i).position;
+            //waypoints[i] = new Vector3(waypoints[i].x, transform.position.y, waypoints[i].z);
         }
-        
     }
 
     private void OnDrawGizmos()
@@ -72,5 +71,7 @@ public class BossChase : MonoBehaviour
         Move(waypoints);
     }
 
-
+    void OnTriggerEnter2D(Collider2D collider) {
+        HazardBehavior.hazardBehavior(collider);
+    }
 }
