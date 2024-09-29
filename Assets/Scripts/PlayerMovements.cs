@@ -17,14 +17,16 @@ public class PlayerMovements : MonoBehaviour
     public KeyCode leftKey;
     public KeyCode rightKey;
 
-    public TimeFreezable timeFreezable;
+    bool isGrounded = true;
+
+    private TimeFreezable timeFreezable;
 
     //int coinCount;
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-        timeFreezable = GetComponent<TimeFreezable>();
+        timeFreezable = GetComponent<TimeFreezable>(); 
         //transform.position = new Vector3(0, 10, 0);
     }
 
@@ -34,7 +36,7 @@ public class PlayerMovements : MonoBehaviour
         // Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"),0);
         Vector2 direction = new Vector2(0, 0);
 
-        if(Input.GetKey(upKey)) {
+        if(Input.GetKey(upKey) && isGrounded) {
             direction += new Vector2(0, 1) * jumpHeight;
         } else if(Input.GetKey(downKey)) {
 
@@ -70,6 +72,10 @@ public class PlayerMovements : MonoBehaviour
     void FixedUpdate()
     {
         myRigidBody.position += velocity * Time.fixedDeltaTime;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        isGrounded = collider.gameObject.tag == "Ground";
     }
 
 }

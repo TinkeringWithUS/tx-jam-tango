@@ -23,7 +23,7 @@ public class TimeFreezable : MonoBehaviour
     }
 
     public void TimeFreeze() {
-        if(!isFrozen) {
+        if(!isFrozen && gameObject.GetComponent<TimeAbilities>() == null) {
             beforeFreezeVelocity = rb.velocity;
 
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -33,7 +33,7 @@ public class TimeFreezable : MonoBehaviour
     }
 
     public void TimeUnfreeze() {
-        if (isFrozen) {
+        if (isFrozen && gameObject.GetComponent<TimeAbilities>() == null) {
             rb.constraints = RigidbodyConstraints2D.None;
 
             rb.velocity = beforeFreezeVelocity;
