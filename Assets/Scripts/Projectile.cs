@@ -11,7 +11,7 @@ public class Projectile : MonoBehaviour
     public GameObject TimePlayer, SpacePlayer;
     Rigidbody2D rb;
     TimeFreezable timeFreezable;
-    Vector2 Direction;
+    Vector2 direction;
     public float lifeSpan = 2;
     float lifeSpanCounter = 0;
 
@@ -31,6 +31,8 @@ public class Projectile : MonoBehaviour
         lifeSpanCounter += Time.deltaTime;
         if (lifeSpanCounter >= lifeSpan) { 
             gameObject.SetActive(false);
+            Debug.Log("set active called due to lifespan, active in hierarchy of projectile: " + gameObject.activeInHierarchy);
+            lifeSpanCounter = 0;
         }
         //transform.position += ProjectileDirection() * Time.deltaTime;
     }
@@ -39,7 +41,7 @@ public class Projectile : MonoBehaviour
     {
         if (timeFreezable.canChange())
         {
-            rb.position += Direction * Time.fixedDeltaTime;
+            rb.position += direction * Time.fixedDeltaTime;
         }
 
     }
@@ -47,7 +49,8 @@ public class Projectile : MonoBehaviour
     public void Setdirection()
     {
         gameObject.SetActive(true);
-        Direction = Trackplayer();
+        Debug.Log("Set direction called on projectile, active in hierarchy: " + gameObject.activeInHierarchy);
+        direction = Trackplayer();
     }
 
     public Vector2 Trackplayer()
@@ -75,6 +78,6 @@ public class Projectile : MonoBehaviour
         // phase through the boss platform
         // if(triggerCollider.GetComponent<BossPlatform>() != null) {
         //     gameObject.SetActive(false);
-        // }
+        //
     }
 }
