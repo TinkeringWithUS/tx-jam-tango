@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialLevelOne.unity
     guid: 84bffd96d366acb4aa23ccfaa8ba1321
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mechanic_test.unity
     guid: 152b45dd2fbee954b9955313f7605490
   - enabled: 1
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fast Platforms.unity
     guid: de680414385f71d4c827e1a72d700aa5
+  - enabled: 1
+    path: Assets/Scenes/TutorialLevelTwo.unity
+    guid: 375bdc0a90e87c44ebd42b00aaa98fe8
   m_configObjects: {}
