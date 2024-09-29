@@ -7,6 +7,7 @@ TagManager:
   - TimePlayer
   - SpacePlayer
   - Hazard
+  - Ground
   layers:
   - Default
   - TransparentFX
