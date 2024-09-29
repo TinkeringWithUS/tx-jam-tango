@@ -8,7 +8,7 @@ public class SwitchActive : MonoBehaviour
     public GameObject Activate;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == ("TimePlayer") || collision.gameObject.tag == ("SpacePlayer")) ;
+        if (collision.gameObject.tag == ("TimePlayer") || collision.gameObject.tag == ("SpacePlayer"))
         {
             Activate.SetActive(!Activate.activeSelf);
             gameObject.SetActive(false);

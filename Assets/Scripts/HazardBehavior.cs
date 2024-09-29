@@ -19,7 +19,6 @@ public class HazardBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D triggerCollider)
     {
         hazardBehavior(triggerCollider);
-        Destroy(gameObject);
     }
 
     public static void hazardBehavior(Collider2D collider) {

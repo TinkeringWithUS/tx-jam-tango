@@ -25,7 +25,6 @@ public class CameraMove : MonoBehaviour
         {
             Vector3 rightVector = new Vector3(1, 0, 0);
             transform.position = transform.position + rightVector * speed * Time.deltaTime;
-
         }
     }
 }

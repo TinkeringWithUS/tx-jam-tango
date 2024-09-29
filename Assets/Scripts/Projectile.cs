@@ -73,7 +73,7 @@ public class Projectile : MonoBehaviour
         HazardBehavior.hazardBehavior(triggerCollider);
 
         // phase through the boss platform
-        if(triggerCollider.GetComponent<BossPlatform>() == null) {
+        if(triggerCollider.GetComponent<BossPlatform>() != null) {
             gameObject.SetActive(false);
         }
     }
