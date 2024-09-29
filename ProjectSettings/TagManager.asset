@@ -8,6 +8,7 @@ TagManager:
   - SpacePlayer
   - Hazard
   - Ground
+  - Door
   layers:
   - Default
   - TransparentFX
