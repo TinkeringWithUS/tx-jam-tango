@@ -21,7 +21,8 @@ public class TimeAbilities : MonoBehaviour
     public Slider freezeLeftSlider;
     public float freezeAmountLeftSeconds;
     private float maxFreezeAmountSeconds;
-    private float freezeStart;
+
+    public PlayerMovements playerMovements;
     
     void Start()
     {
@@ -29,6 +30,7 @@ public class TimeAbilities : MonoBehaviour
             freezeLeftSlider.value = freezeLeftSlider.maxValue;
         }
         maxFreezeAmountSeconds = freezeAmountLeftSeconds;
+        playerMovements = GetComponent<PlayerMovements>();
     }
     
     // Update is called once per frame
@@ -77,6 +79,8 @@ public class TimeAbilities : MonoBehaviour
         {
             gameObject.transform.position = snapshots[0].transform.position;
             gameObject.transform.localScale = ScaleSnapShot;
+
+            playerMovements.isGrounded = true;
         }
     }
 

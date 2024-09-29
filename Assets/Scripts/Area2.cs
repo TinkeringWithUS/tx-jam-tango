@@ -10,7 +10,7 @@ public class Area2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == ("TimePlayer") || collision.gameObject.tag == ("SpacePlayer")) ;
+        if (collision.gameObject.tag == ("TimePlayer") || collision.gameObject.tag == ("SpacePlayer"))
         {
             if (collision.transform.position.y < transform.position.y)
             {

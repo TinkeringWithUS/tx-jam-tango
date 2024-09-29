@@ -17,7 +17,7 @@ public class PlayerMovements : MonoBehaviour
     public KeyCode leftKey;
     public KeyCode rightKey;
 
-    bool isGrounded = true;
+    public bool isGrounded = true;
 
     private TimeFreezable timeFreezable;
 
