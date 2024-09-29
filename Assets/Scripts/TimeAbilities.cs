@@ -8,6 +8,9 @@ public class TimeAbilities : MonoBehaviour
 {
     // Start is called before the first frame update
     public KeyCode freezeKey;
+    public KeyCode snapshotKey = KeyCode.DownArrow;
+    public KeyCode rewindKey = KeyCode.Space;
+
 
     public GameObject[] snapshots;
     Vector3 ScaleSnapShot;
@@ -20,8 +23,9 @@ public class TimeAbilities : MonoBehaviour
     
     void Start()
     {
-
-        freezeLeftSlider.value = freezeLeftSlider.maxValue;
+        if(freezeLeftSlider != null) {
+            freezeLeftSlider.value = freezeLeftSlider.maxValue;
+        }
         maxFreezeAmountSeconds = freezeAmountLeftSeconds;
     }
     
@@ -51,22 +55,23 @@ public class TimeAbilities : MonoBehaviour
             }
         }
 
-
         if (shouldFreeze) {
             freezeAmountLeftSeconds -= Time.deltaTime;
         }
 
-        freezeLeftSlider.value = (freezeAmountLeftSeconds / maxFreezeAmountSeconds) * freezeLeftSlider.maxValue;
+        if(freezeLeftSlider != null) {
+            freezeLeftSlider.value = (freezeAmountLeftSeconds / maxFreezeAmountSeconds) * freezeLeftSlider.maxValue;
+        }
     }
 
     public void TimeSnapshot()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(snapshotKey))
         {
             snapshots[0].transform.position = transform.position;
             ScaleSnapShot = transform.localScale;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(rewindKey))
         {
             gameObject.transform.position = snapshots[0].transform.position;
             gameObject.transform.localScale = ScaleSnapShot;

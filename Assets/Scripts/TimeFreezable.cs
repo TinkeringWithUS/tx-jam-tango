@@ -43,6 +43,10 @@ public class TimeFreezable : MonoBehaviour
     }
 
     public bool canChange() {
+        // exclude time player from freezing
+        if(gameObject.GetComponent<TimeAbilities>() != null) {
+            return true;
+        }
         return !isFrozen;
     }
 }

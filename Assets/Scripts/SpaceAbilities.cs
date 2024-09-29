@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpaceAbilities : MonoBehaviour
@@ -11,6 +14,9 @@ public class SpaceAbilities : MonoBehaviour
     public KeyCode upKey;
     public KeyCode downKey;
     public KeyCode teleportKey;
+    public KeyCode flipGravityKey;
+    public float gravityStrength = 100.0f;
+    private int currentGravDirection = 0;
 
     private Vector2 lastDirection;
     public float teleportDistance;
@@ -18,10 +24,6 @@ public class SpaceAbilities : MonoBehaviour
     public int numAvailableTeleports;
     public float teleportCooldown;
     private bool canTeleport = true;
-
-    bool gravityFlipped = false;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +54,6 @@ public class SpaceAbilities : MonoBehaviour
         }
 
         FlipGravity();
-
     } 
 
     private IEnumerator TeleportCooldownTimer() {
@@ -62,24 +63,21 @@ public class SpaceAbilities : MonoBehaviour
 
     public void FlipGravity()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        Vector2[] gravityDirections = { new Vector2(0.0f, 1f), new Vector2(0.0f, -1.0f) };
+
+        if (Input.GetKeyDown(flipGravityKey))
         {
-            if (gravityFlipped == false)
+            currentGravDirection = (currentGravDirection + 1) % gravityDirections.Length;
+
+            Physics2D.gravity = gravityStrength * gravityDirections[currentGravDirection];
+
+            GravityAffected[] gravityAffected = FindObjectsOfType<GravityAffected>();             
+
+            foreach (GravityAffected affected in gravityAffected) 
             {
-                gravityFlipped = true;
-                Physics2D.gravity = new Vector2(3.0f, 0.0f);
-                //rb.gravityScale *= -1;
-            }
-            else
-            {
-                gravityFlipped = false;
-                Physics2D.gravity = new Vector2(-3.0f, 0.0f);
-                //rb.gravityScale *= -1;
+                affected.killVelocity(); 
             }
         }
-        print(gravityFlipped);
     }
-
-    
 }
 

@@ -17,11 +17,14 @@ public class PlayerMovements : MonoBehaviour
     public KeyCode leftKey;
     public KeyCode rightKey;
 
+    public TimeFreezable timeFreezable;
+
     //int coinCount;
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        timeFreezable = GetComponent<TimeFreezable>();
         //transform.position = new Vector3(0, 10, 0);
     }
 
@@ -43,6 +46,10 @@ public class PlayerMovements : MonoBehaviour
         }
 
         velocity = direction * speed;
+
+        if(!timeFreezable.canChange()) {
+            velocity = new Vector2(0, 0);
+        }
     }
 
     public Vector2 playerInputCheck()
