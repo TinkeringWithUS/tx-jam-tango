@@ -52,12 +52,6 @@ public class HomingProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D triggerCollider)
     {
-        if (triggerCollider.gameObject.tag == "TimePlayer" || triggerCollider.gameObject.tag == "SpacePlayer")
-        {
-            Debug.Log("collision tag = hazard detected");
-            SceneManager.LoadScene("LoseScene");
-        }
-
-        Destroy(gameObject);
+        HazardBehavior.hazardBehavior(triggerCollider);
     }
 }
