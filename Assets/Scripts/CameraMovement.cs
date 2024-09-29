@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     public float speed;
     Vector3 velocity = Vector3.zero;
-    private float currentPosx;
+    private Vector2 currentPos;
     public GameObject Player1, Player2;
     //Transform camPos;
     // Start is called before the first frame update
@@ -18,11 +18,11 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosx,transform.position.y, transform.position.z), ref velocity, speed);
+            transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPos.x, currentPos.y, transform.position.z), ref velocity, speed);
     }
 
     public void moveSection(Transform newArea)
     {
-        currentPosx = newArea.position.x;
+        currentPos = newArea.position;
     }
 }
